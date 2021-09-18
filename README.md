@@ -14,8 +14,10 @@ This folder contains three files: "README.md", "parse_annotation.pl", "output.cs
 ##The computing works are conducted using high-performed computing cluster with Linux system
 
 #step_1 annotate the vcf file using SnpEff(http://pcingola.github.io/SnpEff/)
+
 #load jdk module on cluster
 module load jdk/1.8.0_171
+
 #run SnpEff using human genome GRCh37 as reference to match vcf file.  
 bsub -n 3 -R span[hosts=1] -q interactive -R rusage[mem=2048] -W 0:20 -Is java -jar snpEff.jar GRCh37.75 \
 ./variant_data.vcf -no-downstream -no-upstream > output.vcf
